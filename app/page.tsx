@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import OurAdvantages from '@/components/OurAdvantages';
 import OurCars from '@/components/OurCars';
 import OurServices from '@/components/OurServices';
+import SwiperContainer from '@/components/SwiperContainer';
 
 export default function Home() {
 	return (
@@ -16,6 +17,7 @@ export default function Home() {
 			</main>
 			<OurCars />
 			<Contatcts />
+			<SwiperContainer />
 		</div>
 	);
 }

@@ -26,9 +26,9 @@ const NeonCard: NextPage<NeonCardProps> = ({
 			ref={conainer}>
 			<motion.div
 				animate={{
-					translateX: isInView ? 0 : isEven ? '300%' : '-300%',
+					translateX: isInView ? 0 : isEven ? '100vw' : '-100vw',
 				}}
-				transition={{ type: 'spring', damping: 20, delay: 0.1 }}
+				transition={{ type: 'spring', bounce: 0, delay: 0.1 }}
 				className=' relative h-full flex gap-4 py-11 px-6 md:pl-16 drop-shadow-neon-sm md:drop-shadow-neon text-accent bg-base-300 rounded-3xl'>
 				<div className=' absolute md:relative font-bold text-5xl opacity-80'>
 					{number.toString().padStart(2, '0')}

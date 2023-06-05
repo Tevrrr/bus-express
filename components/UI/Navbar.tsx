@@ -3,13 +3,19 @@
 'use client';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import type { NextPage } from 'next';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import MenuToggle from './MenuToggle';
+import { useLockScroll } from '@/common/hooks/useLockScroll';
 
 interface NavbarProps {}
 
 const Navbar: NextPage<NavbarProps> = () => {
-	const { scrollY } = useScroll();
+    const target = useRef(null)
+    const { scrollY } = useScroll();
+    const [width, setWidth] = useState(window.innerWidth);
 	const [bgMod, setBgMod] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
+    useLockScroll(target, isOpen);
 
 	useMotionValueEvent(scrollY, 'change', (latest) => {
 		if (latest > 100) {
@@ -17,21 +23,58 @@ const Navbar: NextPage<NavbarProps> = () => {
 		} else {
 			setBgMod(false);
 		}
-	});
+    });
+
+    useEffect(() => {
+		const handleResize = (event:Event) => {
+            //@ts-ignore
+            if (event.target?.innerWidth > 768) {
+				setIsOpen(false);
+			}
+		};
+		window.addEventListener('resize', handleResize);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
+    
+    const togleMenu = () => {
+        setIsOpen(!isOpen)
+    }
 
 	return (
-		<motion.nav
-			initial={{ translateY: -200 }}
-			animate={{ translateY: 0 }}
-			transition={{ type: 'spring', damping: 20, delay: 0.7 }}
-			className={`w-full flex justify-center fixed transition-all duration-300 border-neutral z-30 ${
+        <motion.nav
+            ref={target}
+			className={`w-full flex justify-center gap-4 fixed   text-xl transition-all duration-300 border-neutral z-30 ${
 				bgMod ? 'bg-base-200 border-b-2 !translate-y-0 ' : ' '
 			}`}>
-			<div className=' container max-w-screen-2xl flex justify-end gap-14 pb-6 pt-10 pr-32 text-xl text-base-content'>
-				<a className=' font-bold'>Услуги</a>
-				<a className=' cursor-pointer'>Перимущества</a>
-				<a className=' cursor-pointer'>Автомобили</a>
-				<a className=' cursor-pointer'>Контакты</a>
+			<div className=' container relative max-w-screen-2xl flex gap-4 top-full p-2 md:pb-6 md:pt-10 lg:pr-32 justify-end  text-base-content'>
+				<ul
+					className={` absolute md:static min-h-screen md:min-h-min flex flex-col md:flex-row items-center md:justify-between p-4 pt-36 md:p-0 text-center gap-14 transition-all duration-300 top-0 right-0 w-full lg:w-auto bg-base-200 md:bg-opacity-0 ${
+						isOpen ? ' ' : ' translate-x-full md:translate-x-0'
+					}`}>
+					<li>
+						<a className=' p-4  font-bold'>Услуги</a>
+					</li>
+					<li>
+						<a className=' p-4 cursor-pointer'>Перимущества</a>
+					</li>
+					<li>
+						<a className=' p-4  cursor-pointer'>Автомобили</a>
+					</li>
+					<li>
+						<a className=' p-4  cursor-pointer'>Контакты</a>
+					</li>
+				</ul>
+				<MenuToggle
+					className={`md:hidden z-20 select-none pt-2 w-14 h-14  rounded-full flex justify-center  items-center`}
+					toggle={togleMenu}
+					isOpen={isOpen}
+				/>
+				{/* <button onClick={togleMenu} className='md:hidden z-20'>
+					{' '}
+					Menu
+				</button> */}
 			</div>
 		</motion.nav>
 	);

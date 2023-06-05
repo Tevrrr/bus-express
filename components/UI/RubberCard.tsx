@@ -43,8 +43,8 @@ const RubberCard: NextPage<RubberCardProps> = ({
 					delay: 0.2,
 				}}
 				className='text-accent-content z-10 flex flex-col justify-between gap-8'>
-				<h3>{title}</h3>
-				<p className='text-lg sm:text-2xl font-semibold'>{text}</p>
+				<h3 className=''>{title}</h3>
+				<p className='text-base sm:text-2xl font-semibold'>{text}</p>
 			</motion.div>
 		</article>
 	);

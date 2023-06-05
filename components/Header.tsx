@@ -41,6 +41,7 @@ const Header: NextPage<HeaderProps> = () => {
 								}}
 								transition={{
 									type: 'spring',
+									bounce: 0,
 									damping: 15,
 									stiffness: 100,
 									delay: 0.2,
@@ -55,6 +56,7 @@ const Header: NextPage<HeaderProps> = () => {
 								}}
 								transition={{
 									type: 'spring',
+									bounce: 0,
 									damping: 15,
 									stiffness: 100,
 									delay: 0.2,
@@ -69,6 +71,7 @@ const Header: NextPage<HeaderProps> = () => {
 								}}
 								transition={{
 									type: 'spring',
+									bounce: 0,
 									damping: 15,
 									stiffness: 100,
 									delay: 0.2,
@@ -82,6 +85,7 @@ const Header: NextPage<HeaderProps> = () => {
 								}}
 								transition={{
 									type: 'spring',
+									bounce: 0,
 									damping: 15,
 									stiffness: 100,
 									delay: 0.2,
@@ -98,7 +102,12 @@ const Header: NextPage<HeaderProps> = () => {
 					<motion.div
 						initial={{ translateY: 500, opacity: 0 }}
 						animate={{ translateY: 0, opacity: 1 }}
-						transition={{ type: 'spring', damping: 30, delay: 0.7 }}
+						transition={{
+							type: 'spring',
+							damping: 30,
+							bounce: 0,
+							delay: 0.7,
+						}}
 						className=' flex flex-col gap-5'>
 						<h3 className=' max-w-xl'>
 							Отправте ваш номер и мы с вами свяжемся!
@@ -111,7 +120,12 @@ const Header: NextPage<HeaderProps> = () => {
 					<motion.div
 						initial={{ translateX: 3000, translateY: -300 }}
 						animate={{ translateX: 0, translateY: 0 }}
-						transition={{ type: 'spring', damping: 30, delay: 1 }}
+						transition={{
+							type: 'spring',
+							damping: 30,
+							bounce: 0,
+							delay: 1,
+						}}
 						style={{ translateY: translate }}
 						className=' relative w-[800px] h-[500px] xl:translate-x-20 '>
 						<Image

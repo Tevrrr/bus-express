@@ -8,9 +8,9 @@ interface OurAdvantagesProps {}
 const OurAdvantages: NextPage<OurAdvantagesProps> = () => {
 	return (
 		<section className=' bg-neutral w-full flex flex-col items-center'>
-			<div className='container w-full min-h-screen pt-20 pb-24'>
+			<div className='container w-full min-h-screen pt-20 pb-24 px-2'>
 				<h2 className=' text-center'>Наши преимущества </h2>
-				<div className='flex lg:flex-row flex-col gap-7 pt-16 px-4'>
+				<div className='flex lg:flex-row flex-col gap-7 pt-16'>
 					<RubberCard
 						stretched
 						title='Профессиональные водители'
@@ -21,7 +21,7 @@ const OurAdvantages: NextPage<OurAdvantagesProps> = () => {
 						text='Удобные кресла с регулировкой наклона, кондиционер, WI-FI и печка для поездок зимой. Современные комфортабельные микроавтобусы сделанные для людей.'
 					/>
 				</div>
-				<div className='flex lg:flex-row flex-col gap-7 pt-7 lg:pt-16 px-4'>
+				<div className='flex lg:flex-row flex-col gap-7 pt-7 lg:pt-16'>
 					<RubberCard
 						title='Опыт и надежность'
 						text='Мы являемся проверенным и надежным перевозчиком с большим  опытом в пассажирских перевозках, гарантирующим безопасность и комфорт вашего путешествия.'

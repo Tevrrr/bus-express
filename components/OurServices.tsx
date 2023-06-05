@@ -32,7 +32,7 @@ const OurServices: NextPage<OurServicesProps> = () => {
 						<div className=' w-full md:w-auto xl:w-1/2 self-end xl:self-start flex justify-center pr-5 xl:even:translate-y-24'>
 							<div className='flex flex-col justify-between gap-14 text-right border-r-4 border-dashed border-accent pr-4 md:pr-16'>
 								<h5>Забираем людей из:</h5>
-								<ul className='flex flex-col items-end font-semibold text-2xl'>
+								<ul className='flex flex-col grow items-end font-semibold text-xl md:text-2xl'>
 									<li>Донецка (и области)</li>
 									<li>Луганска (и области)</li>
 									<li>Ростова</li>
@@ -43,7 +43,7 @@ const OurServices: NextPage<OurServicesProps> = () => {
 							</div>
 							<div className='flex flex-col justify-between gap-14 pl-4 md:pl-16 pr-6 sm:pr-16'>
 								<h5>Везем в:</h5>
-								<ul className='flex flex-col items-start font-semibold text-2xl'>
+								<ul className='flex flex-col  grow items-start font-semibold text-xl md:text-2xl'>
 									<li>Эстонию</li>
 									<li>Латвию</li>
 									<li>Литву</li>

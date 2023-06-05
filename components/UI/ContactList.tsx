@@ -1,6 +1,5 @@
 /** @format */
 'use client';
-import { motion } from 'framer-motion';
 import type { NextPage } from 'next';
 import { FaViber, FaTelegram, FaWhatsapp } from 'react-icons/fa';
 import ContactLink from './ContactLink';
