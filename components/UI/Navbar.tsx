@@ -12,7 +12,6 @@ interface NavbarProps {}
 const Navbar: NextPage<NavbarProps> = () => {
     const target = useRef(null)
     const { scrollY } = useScroll();
-    const [width, setWidth] = useState(window.innerWidth);
 	const [bgMod, setBgMod] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
     useLockScroll(target, isOpen);
