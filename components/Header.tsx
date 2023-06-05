@@ -124,7 +124,7 @@ const Header: NextPage<HeaderProps> = () => {
 							type: 'spring',
 							damping: 30,
 							bounce: 0,
-							delay: 1,
+							delay: 1.5,
 						}}
 						style={{ translateY: translate }}
 						className=' relative w-[800px] h-[500px] xl:translate-x-20 '>
