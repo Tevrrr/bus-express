@@ -5,10 +5,6 @@ import dbConnect from '@/lib/dbConnect';
 import Call from '@/models/Call';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-export const config = {
-	runtime: 'edge',
-};
-
 interface Data {
 	calls?: ICall[];
 	call?: ICall;
