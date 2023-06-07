@@ -12,7 +12,7 @@ const OurAdvantages: NextPage<OurAdvantagesProps> = () => {
 	return (
 		<motion.section
             {...value}
-			viewport={{ amount: 0.2 }}
+
 			className=' bg-neutral w-full flex flex-col items-center'>
 			<div className='container w-full min-h-screen pt-20 pb-24 px-2'>
 				<h2 className=' text-center'>Наши преимущества </h2>

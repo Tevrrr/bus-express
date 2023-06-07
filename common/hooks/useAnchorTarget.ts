@@ -16,6 +16,6 @@ export const useAnchorTarget = (name: string): IAnchorTarget => {
 		onViewportLeave() {
 			delTarget(id);
 		},
-		viewport: { amount: 0.2 },
+		viewport: { amount: 0.1 },
 	};
 };
