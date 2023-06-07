@@ -1,9 +1,9 @@
 /** @format */
-
 import { ICall } from '../../common/types/ICall';
 import dbConnect from '@/lib/dbConnect';
 import Call from '@/models/Call';
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { NextApiRequest, NextApiResponse } from 'next';
+
 
 
 
@@ -13,7 +13,7 @@ interface Data {
 	message?: string;
 }
 
-export default async function hendler(req: VercelRequest, res: VercelResponse) {
+export default async function hendler(req: NextApiRequest, res: NextApiResponse<Data>) {
 	const { method } = req;
 
 	await dbConnect();
@@ -42,3 +42,4 @@ export default async function hendler(req: VercelRequest, res: VercelResponse) {
 			break;
 	}
 };
+
