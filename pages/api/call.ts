@@ -4,9 +4,6 @@ import dbConnect from '@/lib/dbConnect';
 import Call from '@/models/Call';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-
-
-
 interface Data {
 	calls?: ICall[];
 	call?: ICall;
