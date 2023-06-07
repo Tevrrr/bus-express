@@ -3,7 +3,9 @@
 import { ICall } from '../../common/types/ICall';
 import dbConnect from '@/lib/dbConnect';
 import Call from '@/models/Call';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
+
+
 
 interface Data {
 	calls?: ICall[];
@@ -11,10 +13,7 @@ interface Data {
 	message?: string;
 }
 
-export default async function handler(
-	req: NextApiRequest,
-	res: NextApiResponse<Data>
-) {
+export default async function hendler(req: VercelRequest, res: VercelResponse) {
 	const { method } = req;
 
 	await dbConnect();
@@ -42,4 +41,4 @@ export default async function handler(
 			res.status(400).json({ message: 'error' });
 			break;
 	}
-}
+};
