@@ -1,10 +1,13 @@
 /** @format */
 
 import { ICall } from '../../common/types/ICall';
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import dbConnect from '@/lib/dbConnect';
 import Call from '@/models/Call';
 import type { NextApiRequest, NextApiResponse } from 'next';
+
+export const config = {
+	runtime: 'edge',
+};
 
 interface Data {
 	calls?: ICall[];
