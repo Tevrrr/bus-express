@@ -1,6 +1,5 @@
 /** @format */
 
-'use client';
 import type { NextPage } from 'next';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
@@ -10,11 +9,6 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import SwiperClass from 'swiper/types/swiper-class';
 import SwiperContext from '@/common/SwiperContext';
-import {
-	disableBodyScroll,
-	enableBodyScroll,
-	clearAllBodyScrollLocks,
-} from 'body-scroll-lock';
 import { useLockScroll } from '@/common/hooks/useLockScroll';
 
 interface SwiperContainerProps {}
@@ -25,7 +19,7 @@ const SwiperContainer: NextPage<SwiperContainerProps> = () => {
 	const { isOpen, activeSwide, setIsOpen } = useContext(SwiperContext);
     useLockScroll(target, isOpen);
 
-	const slideTo = (index: number) => swiper?.slideTo(index);
+	const slideTo = (index: number) => swiper?.slideTo(index, 0);
 
 	const closeSwiper = () => {
 		setIsOpen(false);

@@ -1,5 +1,4 @@
 /** @format */
-'use client';
 import { motion } from 'framer-motion';
 import type { NextPage } from 'next';
 

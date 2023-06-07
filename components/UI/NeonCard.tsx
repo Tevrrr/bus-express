@@ -1,6 +1,5 @@
 /** @format */
 
-'use client';
 import { motion, useInView } from 'framer-motion';
 import type { NextPage } from 'next';
 import { useRef } from 'react';

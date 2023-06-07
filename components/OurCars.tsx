@@ -1,14 +1,18 @@
 /** @format */
 
 import type { NextPage } from 'next';
-import Image from 'next/image';
 import ImageContainer from './UI/ImageContainer';
+import { motion } from 'framer-motion';
+import { useAnchorTarget } from '@/common/hooks/useAnchorTarget';
 
 interface OurCarsProps {}
 
 const OurCars: NextPage<OurCarsProps> = () => {
+    const value = useAnchorTarget('Автомобили');
 	return (
-		<div className='container static -translate-y-10 flex flex-col items-center'>
+		<motion.div
+			{...value}
+			className='container static -translate-y-10 flex flex-col items-center'>
 			<h2>Наши автомобили</h2>
 			<div className='flex flex-col lg:flex-row flex-wrap  gap-2 md:gap-7 pt-8 md:pt-16 w-full px-4'>
 				<div className='flex gap-2 md:gap-7 grow w-full shrink-0'>
@@ -27,7 +31,7 @@ const OurCars: NextPage<OurCarsProps> = () => {
 					/>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

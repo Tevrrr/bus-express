@@ -1,15 +1,21 @@
 /** @format */
-'use client';
+
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import PhoneInput from './UI/PhoneInput';
-import { motion, useTransform, useScroll } from 'framer-motion';
+import {
+	motion,
+	useTransform,
+	useScroll,
+	useAnimationControls,
+} from 'framer-motion';
 
 interface HeaderProps {}
 
 const Header: NextPage<HeaderProps> = () => {
-    const { scrollYProgress } = useScroll();
-	const translate = useTransform(scrollYProgress, [0, .4], [0, 100]);
+	const { scrollYProgress } = useScroll();
+	const controls = useAnimationControls();
+	const translate = useTransform(scrollYProgress, [0, 0.4], [0, 100]);
 	return (
 		<>
 			<motion.div className=' hidden md:block absolute  w-[600px] h-40 top-0 -left-40 lg:left-0'>
@@ -119,17 +125,25 @@ const Header: NextPage<HeaderProps> = () => {
 					<div className=' grow'></div>
 					<motion.div
 						initial={{ translateX: 3000, translateY: -300 }}
-						animate={{ translateX: 0, translateY: 0 }}
+						animate={controls}
+						custom={{
+							translateX: 0,
+							translateY: 0,
+						}}
 						transition={{
 							type: 'spring',
 							damping: 30,
 							bounce: 0,
-							delay: 1.5,
+							delay: 1,
 						}}
 						style={{ translateY: translate }}
 						className=' relative w-[800px] h-[500px] xl:translate-x-20 '>
 						<Image
 							src='/car_header.png'
+							loading='eager'
+							onLoad={() => {
+								controls.start((i)=>i);
+							}}
 							alt=''
 							fill
 							className=' object-cover object-left-bottom'

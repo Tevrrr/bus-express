@@ -1,5 +1,5 @@
 /** @format */
-'use client';
+
 import { motion } from 'framer-motion';
 import type { NextPage } from 'next';
 
@@ -20,7 +20,8 @@ const RubberCard: NextPage<RubberCardProps> = ({
 				initial={{
 					// width: stretched ? '95%' : '105%',
 					width:  '0',
-				}}
+                }}
+                
 				whileInView={{
 					width: '100%',
 				}}

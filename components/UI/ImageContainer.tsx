@@ -1,6 +1,6 @@
 /** @format */
 
-'use client';
+
 import SwiperContext from '@/common/SwiperContext';
 import { motion, useInView } from 'framer-motion';
 import type { NextPage } from 'next';
@@ -53,7 +53,12 @@ const ImageContainer: NextPage<ImageContainerProps> = ({
 				}}
 				transition={{ type: 'spring', bounce: 0 }}
 				className=' overflow-hidden relative bg-accent-content'>
-				<Image src={src} alt='' fill className=' object-cover' />
+				<Image
+					src={src}
+					alt=''
+					fill
+					className=' object-cover'
+				/>
 			</motion.div>
 		</motion.div>
 	);

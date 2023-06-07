@@ -1,14 +1,17 @@
 /** @format */
-
 import type { NextPage } from 'next';
 import NeonCard from './UI/NeonCard';
 import Image from 'next/image';
+import { useAnchorTarget } from '@/common/hooks/useAnchorTarget';
+import { motion } from 'framer-motion';
 
 interface OurServicesProps {}
 
 const OurServices: NextPage<OurServicesProps> = () => {
+    const value = useAnchorTarget('Услуги');
+
 	return (
-		<section className='relative w-full flex flex-col items-center'>
+		<motion.section {...value} className='relative w-full flex flex-col items-center'>
 			<div className=' hidden md:block absolute right-0 top-[15%] h-[700px] w-40 -z-10'>
 				<Image src='/wave_right.png' alt='' fill />
 			</div>
@@ -175,7 +178,7 @@ const OurServices: NextPage<OurServicesProps> = () => {
 					</div>
 				</div> */}
 			</div>
-		</section>
+		</motion.section>
 	);
 };
 

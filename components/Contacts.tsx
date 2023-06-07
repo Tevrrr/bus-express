@@ -1,14 +1,20 @@
-import type { NextPage } from 'next'
+/** @format */
+
+import type { NextPage } from 'next';
 import PanelOrderCall from './UI/PanelOrderCall';
 import ContactList from './UI/ContactList';
 import Divider from './UI/Divider';
+import { useAnchorTarget } from '@/common/hooks/useAnchorTarget';
+import { motion } from 'framer-motion';
 
-interface ContatctsProps {};
+interface ContatctsProps {}
 
 const Contatcts: NextPage<ContatctsProps> = () => {
-
-    return (
-		<div className='container px-4 pt-8 flex justify-center'>
+	const value = useAnchorTarget('Контакты');
+	return (
+		<motion.div
+			{...value}
+			className='container px-4 pt-8 flex justify-center'>
 			<div className=' md:bg-neutral rounded-3xl w-full flex xl:flex-row flex-col items-center xl:justify-around md:p-10 gap-16 xl:gap-4 mb-4'>
 				<div className='flex flex-col max-w-[600px] w-full gap-8 xl:gap-24'>
 					<h3 className=' text-center'>Закажите наш звонок</h3>
@@ -20,8 +26,8 @@ const Contatcts: NextPage<ContatctsProps> = () => {
 					<ContactList />
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
-}
+};
 
 export default Contatcts;
