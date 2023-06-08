@@ -41,8 +41,8 @@ const PhoneInput: NextPage<PhoneInputProps> = () => {
 	};
 
 	return (
-		<div className=' w-full flex flex-col gap-2 overflow-hidden'>
-			<div className=' md:pl-10 pt-3 font-medium -z-10  text-error'>
+		<div className=' w-full flex flex-col gap-2'>
+			<div className=' overflow-hidden md:pl-10 pt-3 font-medium -z-10  text-error'>
 				<motion.p
 					initial={{
 						translateY: 50,
