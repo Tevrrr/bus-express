@@ -21,6 +21,13 @@ module.exports = {
 				'neon-sm': '0px -1px 5px #D99330',
 				down: '0px 4px 4px rgba(217, 147, 48, 0.2)',
 			},
+			listStyleType: {
+				none: 'none',
+				disc: 'disc',
+				decimal: 'decimal',
+				square: 'square',
+				roman: 'upper-roman',
+			},
 		},
 
 		screens: {

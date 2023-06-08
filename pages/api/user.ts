@@ -1,6 +1,5 @@
 /** @format */
 
-import decipherToken from '@/common/helpers/decipherToken';
 import { ICall } from '../../common/types/ICall';
 import dbConnect from '@/lib/dbConnect';
 import Call from '@/models/Call';
@@ -22,16 +21,7 @@ export default async function hendler(req: NextApiRequest, res: NextApiResponse<
 
 	switch (method) {
 		case 'GET':
-            try {
-                const decipherData = decipherToken(req, res);
-				if (!decipherData) {
-					return;
-				}
-				if (decipherData.errorMessage) {
-					return res
-						.status(400)
-						.json({ errorMessage: decipherData.errorMessage });
-				}
+			try {
 				const calls = await Call.find<ICall>({});
 				res.status(200).json({ calls });
 			} catch (error) {

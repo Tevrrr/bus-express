@@ -34,7 +34,7 @@ const NeonCard: NextPage<NeonCardProps> = ({
 				</div>
 				<div className=' grow flex flex-col gap-3'>
 					<h4 className='md:pl-0 pl-16'>{title}</h4>
-					<ul className=' font-bold text-xl leading-8 marker:text-accent list-disc pl-8'>
+					<ul className=' font-bold text-xl leading-8 marker:text-accent list-square pl-8'>
 						{items.map((item) => {
 							return <li key={item}>{item}</li>;
 						})}
