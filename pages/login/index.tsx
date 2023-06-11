@@ -33,8 +33,10 @@ const Login: NextPage = () => {
 		const loadID = toast.loading('Подождите...', {
 			position: 'bottom-center',
 		});
-		login(data.username, data.password, (result) => {
-			if (!result) {
+        login(data.username, data.password, (result) => {
+
+            
+			if (!result?.username) {
 				toast.error('Неправильное имя пользователя или пароль!', {
 					position: 'bottom-center',
 					id: loadID,

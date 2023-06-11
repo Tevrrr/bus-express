@@ -5,6 +5,7 @@ import { ICall } from '../../common/types/ICall';
 import dbConnect from '@/lib/dbConnect';
 import Call from '@/models/Call';
 import { NextApiRequest, NextApiResponse } from 'next';
+import authService from '@/service/api/authService';
 
 interface Data {
 	calls?: ICall[];
@@ -49,15 +50,7 @@ export default async function hendler(
 		case 'POST':
 			try {
 				const date = new Date();
-				// const dateNow: string = date.toLocaleString('ru', {
-				// 	year: 'numeric',
-				// 	month: '2-digit',
-				// 	day: '2-digit',
-				// 	hour: 'numeric',
-				// 	minute: 'numeric',
-				// 	second: 'numeric',
-				// 	hour12: false,timeZoneName: 'short'
-				// });
+
 
 				const call = await Call.create<ICall>({
 					...req.body.call,

@@ -18,8 +18,8 @@ export const loginUser = async (
 		console.log(result);
 		const response = await axios.put(`${URL}/api/auth`, result);
 		console.log(response);
-		if (props) props(response.data.user);
-		return response.data.user;
+		if (props) props(response.data);
+		return response.data;
 	} catch (error: any) {
 		console.log(error.response.data);
 		if (props) props(null);
