@@ -9,9 +9,10 @@ import toast from 'react-hot-toast';
 
 interface UserCardProps {
 	User: IUser;
+    reloadPage?: () => void;
 }
 
-const UserCard: NextPage<UserCardProps> = ({ User }) => {
+const UserCard: NextPage<UserCardProps> = ({ User, reloadPage = () =>{} }) => {
 	const { username, _id } = User;
 	const { token } = useContext(UserContext);
 
@@ -32,6 +33,7 @@ const UserCard: NextPage<UserCardProps> = ({ User }) => {
 					position: 'bottom-center',
 					id: loadID,
 				});
+				reloadPage();
 			});
 	};
 

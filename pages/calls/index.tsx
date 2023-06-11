@@ -38,8 +38,8 @@ const Calls: NextPage<CallsProps> = ({}) => {
 
 	return (
 		<AuthController>
-			<AdminContainer title='Главная'>
-				<div className=' min-h-screen flex flex-col items-center pt-28'>
+			<AdminContainer title='Звонки'>
+				<div className=' min-h-screen flex flex-col items-center pt-20 pb-4 md:pt-28'>
 					<div className='container grow flex flex-wrap items-start'>
 						{calls?.map((item) => {
 							return <CallCard key={item._id} call={item} />;

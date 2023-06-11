@@ -14,23 +14,34 @@ import { useContext, useEffect, useState } from 'react';
 interface CallsProps {}
 
 const Calls: NextPage<CallsProps> = ({}) => {
-    const [users, setUsers] = useState<IUser[]>([])
+	const [users, setUsers] = useState<IUser[]>([]);
 	const { token } = useContext(UserContext);
+
+	const reloadPage = () => {
+		if (token)
+			getUsers(token, (users) => {
+				if (users) setUsers(users);
+			});
+	};
+
     useEffect(() => {
-        if(token) getUsers(token, (users) => {
-            if (users) setUsers(users);
-            console.log(users);
-        })
-	}, [token]);
+        reloadPage();
+    }, [token]);
 
 	return (
 		<AuthController>
 			<AdminContainer title='Администраторы'>
-				<div className=' min-h-screen flex flex-col items-center pt-32'>
-                    <div className='container grow flex flex-wrap items-start px-4 '>
-                        <AddUserCard/>
+				<div className=' min-h-screen flex flex-col items-center pt-20 pb-4 md:pt-32'>
+					<div className='container grow flex flex-wrap items-start px-4 '>
+						<AddUserCard reloadPage={reloadPage} />
 						{users?.map((item) => {
-							return <UserCard User={item} key={item._id} />;
+							return (
+								<UserCard
+									reloadPage={reloadPage}
+									User={item}
+									key={item._id}
+								/>
+							);
 						})}
 					</div>
 					<div className='grow'></div>

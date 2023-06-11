@@ -11,9 +11,11 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FaCheck } from 'react-icons/fa';
 
-interface AddUserCardProps {}
+interface AddUserCardProps {
+	reloadPage?: () => void;
+}
 
-const AddUserCard: NextPage<AddUserCardProps> = () => {
+const AddUserCard: NextPage<AddUserCardProps> = ({ reloadPage = ()=>{} }) => {
 	const { token } = useContext(UserContext);
 
 	const {
@@ -41,7 +43,8 @@ const AddUserCard: NextPage<AddUserCardProps> = () => {
 					return;
 				}
 				setValue('password', '');
-				setValue('username', '');
+                setValue('username', '');
+                reloadPage();
 				toast.success('Адимнистратор был успешно добавлен!', {
 					position: 'bottom-center',
 					id: loadID,
@@ -56,6 +59,9 @@ const AddUserCard: NextPage<AddUserCardProps> = () => {
 				onSubmit={handleSubmit(onSubmit)}
 				className={` relative min-h-[130px] w-full h-full flex flex-col justify-between gap-2 p-3 bg-accent text-accent-content rounded-2xl border-2 border-accent`}>
 				<motion.p
+					initial={{
+						height: 0,
+					}}
 					animate={{
 						height: errors.password || errors.username ? 'auto' : 0,
 					}}
