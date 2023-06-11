@@ -6,6 +6,7 @@ import dbConnect from '@/lib/dbConnect';
 import Call from '@/models/Call';
 import { NextApiRequest, NextApiResponse } from 'next';
 import authService from '@/service/api/authService';
+import { sendMsg } from '@/service/api/telegramMsg';
 
 interface Data {
 	calls?: ICall[];
@@ -51,11 +52,14 @@ export default async function hendler(
 			try {
 				const date = new Date();
 
-
 				const call = await Call.create<ICall>({
 					...req.body.call,
 					date,
-				}); /* create a new model in the database */
+                }); 
+                sendMsg(
+					req.body.call.phone,
+					req.body.call.additionalInformation
+				);
 				res.status(201).json({ call });
 			} catch (error) {
 				res.status(400).json({ errorMessage: 'error' });

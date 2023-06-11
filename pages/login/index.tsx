@@ -53,7 +53,7 @@ const Login: NextPage = () => {
 
     return (
 		<AdminContainer title='Вход' navbar={false}>
-			<div className=' flex w-full h-screen items-center justify-center p-4'>
+			<div className=' flex w-full h-screen items-center justify-center'>
 				<form
 					onSubmit={handleSubmit(onSubmit)}
 					className=' max-w-lg overflow-hidden flex flex-col items-center gap-8 p-6 md:p-8 bg-accent text-accent-content rounded-3xl w-full'>
