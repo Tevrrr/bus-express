@@ -1,10 +1,11 @@
 /** @format */
-
 import { ICall } from '@/common/types/ICall';
 import axios from 'axios';
 
+type ICallReq = Omit<ICall, '_id' | 'date'>
+
 export const postCall = async (
-	call: ICall,
+	call: ICallReq,
 	props?: (value: {} | null, errorMessage?: string) => void
 ): Promise<{} | null> => {
 	try {
