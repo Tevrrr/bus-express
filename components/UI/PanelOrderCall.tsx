@@ -12,24 +12,24 @@ const PanelOrderCall: NextPage<PanelOrderCallProps> = () => {
 	const {
 		register,
 		handleSubmit,
+		setValue,
 		formState: { errors },
 	} = useForm<ICall>();
 	const onSubmit: SubmitHandler<ICall> = (data) => {
 		const loadID = toast.loading('Мы отправляем ваш номер...', {
 			position: 'bottom-center',
 		});
-        postCall(data, (value, error) => {
-            // toast.dismiss(loadID);
+		postCall(data, (value, error) => {
+			// toast.dismiss(loadID);
 			if (!value) {
-                console.log(error);
-                toast.error(error || 'Ошибка добавления телефона', {
+				toast.error(error || 'Ошибка добавления телефона', {
 					position: 'bottom-center',
 					id: loadID,
 				});
 				return;
 			}
-            console.log(value);
-            
+			setValue('phone', '');
+			setValue('additionalInformation', '');
 			toast.success('Телефон был успешно добавлен! Мы с вами свяжемся', {
 				position: 'bottom-center',
 				id: loadID,

@@ -14,7 +14,8 @@ interface Inputs {
 const PhoneInput: NextPage<PhoneInputProps> = () => {
 	const {
 		register,
-		handleSubmit,
+        handleSubmit, 
+        setValue,
 		formState: { errors },
 	} = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = (data) => {
@@ -22,17 +23,14 @@ const PhoneInput: NextPage<PhoneInputProps> = () => {
 			position: 'bottom-center',
 		});
         postCall(data, (value, error) => {
-            // toast.dismiss(loadID);
 			if (!value) {
-                console.log(error);
                 toast.error(error || 'Ошибка добавления телефона', {
 					position: 'bottom-center',
 					id: loadID,
 				});
 				return;
 			}
-            console.log(value);
-            
+            setValue('phone','');
 			toast.success('Телефон был успешно добавлен! Мы с вами свяжемся', {
 				position: 'bottom-center',
 				id: loadID,
@@ -41,8 +39,8 @@ const PhoneInput: NextPage<PhoneInputProps> = () => {
 	};
 
 	return (
-		<div className=' w-full flex flex-col gap-2'>
-			<div className=' overflow-hidden md:pl-10 pt-3 font-medium -z-10  text-error'>
+		<div className=' w-full flex flex-col gap-2 '>
+			<div className='overflow-hidden md:pl-10 pt-3 font-medium -z-10  text-error'>
 				<motion.p
 					initial={{
 						translateY: 50,

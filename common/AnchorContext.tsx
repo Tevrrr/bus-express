@@ -43,9 +43,12 @@ export const AnchorProvider: NextPage<AnchorContextProps> = ({ children }) => {
 		setQueueTargets([...queueTargets, newTarget]);
 	};
 	const delTarget = (target: string) => {
-		if (target !== targetID) return;
-		// setTargetID('');
 		let nevQueueTargets = queueTargets.filter((item) => target !== item);
+		if (target !== targetID) {
+			setQueueTargets(nevQueueTargets);
+			return;
+		}
+		// setTargetID('');
 		setTargetID(nevQueueTargets.shift() || '');
 		setQueueTargets(nevQueueTargets);
 	};
