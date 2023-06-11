@@ -1,20 +1,27 @@
 /** @format */
 
-import { ICall } from '../../common/types/ICall';
+import UserService from '@/service/api/userService';
+/** @format */
+
+import { IUser } from './../../common/types/IUser';
+/** @format */
+
+import decipherToken from '@/common/helpers/decipherToken';
 import dbConnect from '@/lib/dbConnect';
-import Call from '@/models/Call';
+import User from '@/models/User';
 import { NextApiRequest, NextApiResponse } from 'next';
-
-
-
+import calls from '../calls';
 
 interface Data {
-	calls?: ICall[];
-	call?: ICall;
+	users?: IUser[];
+	user?: IUser;
 	errorMessage?: string;
 }
 
-export default async function hendler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default async function hendler(
+	req: NextApiRequest,
+	res: NextApiResponse<Data>
+) {
 	const { method } = req;
 
 	await dbConnect();
@@ -22,24 +29,50 @@ export default async function hendler(req: NextApiRequest, res: NextApiResponse<
 	switch (method) {
 		case 'GET':
 			try {
-				const calls = await Call.find<ICall>({});
-				res.status(200).json({ calls });
+				const decipherData = decipherToken(req, res);
+				if (!decipherData) {
+					return;
+				}
+				if (decipherData.errorMessage) {
+					return res
+						.status(400)
+						.json({ errorMessage: decipherData.errorMessage });
+				}
+
+				const { users, errorMessage } = await UserService.getUsers();
+				if (errorMessage) {
+					return res.status(400).json({ errorMessage });
+				}
+				res.status(200).json({ users });
 			} catch (error) {
-				res.status(400).json({ errorMessage: 'error' });
+				res.status(400).json({
+					errorMessage: 'Ошибка получения пользователей!',
+				});
 			}
 			break;
-		case 'POST':
+		case 'DELETE':
 			try {
-				const call = await Call.create<ICall>(
-					req.body.call
-				); /* create a new model in the database */
-				res.status(201).json({ call });
+				const decipherData = decipherToken(req, res);
+				if (!decipherData) {
+					return;
+				}
+				if (decipherData.errorMessage) {
+					return res.status(400).json({
+						errorMessage: decipherData.errorMessage,
+					});
+				}
+                const {user} = await UserService.deleteUser(req.query.id?.toString() || '');
+				res.status(200).json({ user });
 			} catch (error) {
-				res.status(400).json({ errorMessage: 'error' });
+				res.status(400).json({
+					errorMessage: 'Ошибка удаления пользователя!',
+				});
 			}
 			break;
 		default:
-			res.status(400).json({ errorMessage: 'error' });
+			res.status(400).json({
+				errorMessage: 'Ошибка удаления пользователя!',
+			});
 			break;
 	}
-};
+}
