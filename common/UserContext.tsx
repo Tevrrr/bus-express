@@ -55,14 +55,13 @@ const UserProvider: NextPage<UserProviderProps> = ({ children }) => {
 		props?: (result: IUserResponse | null) => void
 	) => {
 		const result = await loginUser(username, password);
-		console.log('Результат', result);
 
 		if (result?.username && result?.token) {
 			setUsername(result.username);
 			setToken(result.token);
 			localStorage.setItem('token', result.token);
 		}
-		if (props) props(result);
+		if (props) props(result || null);
 	};
 
 	return (
