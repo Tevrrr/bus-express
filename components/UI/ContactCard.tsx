@@ -14,12 +14,31 @@ const ContactCard: NextPage<ContactCardProps> = ({phone}) => {
 				<h4>
 					<a href={`tel:${phone}`}>{phone}</a>{' '}
 				</h4>
-				<h4>Имя Имя</h4>
 			</div>
 			<div className='flex flex-col sm:flex-row gap-4'>
-				<ContactLink icont={<FaViber />} text='Viber' />
-				<ContactLink icont={<FaTelegram />} text='Telegram' />
-				<ContactLink icont={<FaWhatsapp />} text='WhatsApp' />
+				<ContactLink
+					href={`viber://chat?number=${phone
+						.split(' ')
+						.join('')
+						.split('+')
+						.join('')}`}
+					icont={<FaViber />}
+					text='Viber'
+				/>
+				<ContactLink
+					href={`https://t.me/${phone.split(' ').join('')}`}
+					icont={<FaTelegram />}
+					text='Telegram'
+				/>
+				<ContactLink
+					href={`https://api.whatsapp.com/send?phone=${phone
+						.split(' ')
+						.join('')
+						.split('+')
+						.join('')}`}
+					icont={<FaWhatsapp />}
+					text='WhatsApp'
+				/>
 			</div>
 		</div>
 	);

@@ -6,10 +6,11 @@ import { ReactNode, useState } from 'react';
 
 interface ContactLinkProps {
 	icont: ReactNode;
+	href: string;
 	text: string;
 }
 
-const ContactLink: NextPage<ContactLinkProps> = ({ icont, text }) => {
+const ContactLink: NextPage<ContactLinkProps> = ({ icont, text, href }) => {
 	const [isHovered, setIsHovered] = useState(false);
 	return (
 		<motion.a
@@ -21,6 +22,7 @@ const ContactLink: NextPage<ContactLinkProps> = ({ icont, text }) => {
 			onHoverEnd={(e) => {
 				setIsHovered(false);
 			}}
+			href={href}
 			className='group contact-link '>
 			<motion.span
 				initial={{

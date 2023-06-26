@@ -14,8 +14,8 @@ const Contatcts: NextPage<ContatctsProps> = () => {
 	return (
 		<motion.div
 			{...value}
-			className='container px-4 pt-8 flex justify-center'>
-			<div className=' md:bg-neutral rounded-3xl w-full flex xl:flex-row flex-col items-center xl:justify-around md:p-10 gap-16 xl:gap-4 mb-4'>
+			className='container px-4 pt-8 flex '>
+			<div className=' md:bg-neutral rounded-3xl w-full flex xl:flex-row flex-col  xl:justify-around md:p-10 gap-16 xl:gap-4 mb-4'>
 				<div className='flex flex-col max-w-[600px] w-full gap-8 xl:gap-24'>
 					<h3 className=' text-center'>Закажите наш звонок</h3>
 					<PanelOrderCall />
