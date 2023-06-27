@@ -1,20 +1,25 @@
-const { createServer } = require("https");
-const { parse } = require("url");
-const next = require("next");
-const fs = require("fs");
-const dev = process.env.NODE_ENV !== "production";
+const { createServer } = require('https');
+const { parse } = require('url');
+const { readFileSync } = require('fs');
+const next = require('next');
+
+const port = 80;
+const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
+
 const httpsOptions = {
-  key: fs.readFileSync("/etc/letsencrypt/live/auto-bus.net/fullchain.pem"),
-  cert: fs.readFileSync("/etc/letsencrypt/live/auto-bus.net/privkey.pem"),
+  key: readFileSync('/etc/letsencrypt/live/auto-bus.net/privkey.pem'),
+  cert: readFileSync('/etc/letsencrypt/live/auto-bus.net/cert.pem')
 };
-app.prepare().then(() => {
-  createServer(httpsOptions, (req, res) => {
-    const parsedUrl = parse(req.url, true);
-    handle(req, res, parsedUrl);
-  }).listen(80, (err) => {
-    if (err) throw err;
-    console.log("> Server started on https://localhost:80");
+
+app.prepare()
+  .then(() => {
+    createServer(httpsOptions, (req, res) => {
+      const parsedUrl = parse(req.url, true);
+      handle(req, res, parsedUrl);
+    }).listen(port, err => {
+      if (err) throw err;
+      console.log(`> Ready on https://localhost:${port}`);
+    })
   });
-});
