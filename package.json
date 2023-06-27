@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
-		"start": "next start",
+		"start": "node server.js",
 		"lint": "next lint"
 	},
 	"dependencies": {
@@ -28,6 +28,7 @@
 		"jsonwebtoken": "^9.0.0",
 		"mongoose": "^7.2.2",
 		"next": "13.4.4",
+		"next-ssl-redirect-middleware": "^0.1.4",
 		"postcss": "8.4.24",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
