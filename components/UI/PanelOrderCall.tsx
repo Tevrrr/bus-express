@@ -59,10 +59,15 @@ const PanelOrderCall: NextPage<PanelOrderCallProps> = () => {
 							required: true,
 							pattern: /^[\d\+][\d\(\)\ -]{4,14}\d$/,
 						})}
+						onClick={() => {
+              //@ts-ignore
+          ym(94133484,'reachGoal','order')
+        }}
 						type='tel'
 						className=' w-full bg-accent-focus px-7 py-5 rounded-2xl placeholder:text-accent-content outline-none'
 						placeholder='Номер телефона'
 					/>
+					<div>*Укажите ваши мессенджеры (Viber, WhatsApp или Telegram), чтобы мы точно смогли связаться с вами!</div>
 				</div>
 			</div>
 			<div className='flex flex-col gap-4 w-full'>
@@ -70,7 +75,7 @@ const PanelOrderCall: NextPage<PanelOrderCallProps> = () => {
 				<textarea
 					{...register('additionalInformation')}
 					className=' h-60 bg-accent-focus px-7 py-5 rounded-2xl rounded-br-none placeholder:text-accent-content outline-none'
-					placeholder='Укажите дополнительную информацию (необязательно)'
+					placeholder='Укажите ваши мессенджеры (Viber, WhatsApp или Telegram) и дополнительную информацию'
 				/>
 			</div>
 			<motion.button

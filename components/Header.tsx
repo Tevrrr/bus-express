@@ -2,6 +2,7 @@
 
 import type { NextPage } from 'next';
 import Image from 'next/image';
+import {BiDownArrowAlt} from 'react-icons/bi';
 import PhoneInput from './UI/PhoneInput';
 import {
 	motion,
@@ -118,7 +119,17 @@ const Header: NextPage<HeaderProps> = () => {
 						<h3 className=' max-w-xl'>
 							Отправте ваш номер и мы с вами свяжемся!
 						</h3>
-						<PhoneInput />
+						<div className=' max-w-xl flex flex-col items-center gap-2'>
+                            <motion.a
+					            whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                href='#Контакты'
+                                className=' flex gap-1 items-center rounded-xl text-3xl leading-7 text-accent-content bg-accent  py-7 px-8 drop-shadow-down'>
+                            {/* <BiDownArrowAlt className='text-5xl'/> */}
+					            Отправить
+                            {/* <BiDownArrowAlt className='text-5xl'/> */}
+				            </motion.a>
+                        </div>
 					</motion.div>
 				</div>
 				<div className='hidden lg:flex flex-col'>

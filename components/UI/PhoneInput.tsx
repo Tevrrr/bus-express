@@ -57,6 +57,10 @@ const PhoneInput: NextPage<PhoneInputProps> = () => {
 						required: true,
 						pattern: /^[\d\+][\d\(\)\ -]{4,14}\d$/,
 					})}
+					onClick={() => {
+              //@ts-ignore
+          ym(94133484,'reachGoal','order')
+        }}
 					className=' md:bg-opacity-0 bg-base-300  placeholder:text-base-content font-normal rounded-xl text-xl grow py-8 px-10 outline-none'
 					type='tel'
 					placeholder='Номер телефона'
