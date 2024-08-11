@@ -19,7 +19,7 @@ const Contatcts: NextPage<ContatctsProps> = () => {
 					<PanelOrderCall />
 				</div>
 				<Divider text='ИЛИ' />
-				<div className='flex flex-col max-w-[600px] w-full gap-8 xl:gap-[3.25rem]'>
+				<div className='flex flex-col max-w-[600px] w-full gap-8 xl:gap-24'>
 					<h3 className=' text-center'>Свяжитесь с нами сами</h3>
 					<ContactList />
 				</div>
